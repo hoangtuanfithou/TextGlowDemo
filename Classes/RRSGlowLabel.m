@@ -67,4 +67,46 @@
     [super dealloc];
 }
 
+- (void)setDarkShadowLevel:(int)darkLevel {
+    for (UIView *subView in self.subviews) {
+        if([subView isKindOfClass:[RRSGlowLabel class]]) {
+            [subView removeFromSuperview];
+        }
+    }
+    for (int i = 0; i<darkLevel; i++) {
+        RRSGlowLabel *aLabel = [self duplicateLabel];
+        [self addSubview:aLabel];
+    }
+}
+
+- (void)setDarkShadowLevel:(int)darkLevel {
+    for (UIView *subView in self.subviews) {
+        if([subView isKindOfClass:[RRSGlowLabel class]]) {
+            [subView removeFromSuperview];
+        }
+    }
+    for (int i = 0; i<darkLevel; i++) {
+        RRSGlowLabel *aLabel = [self duplicateLabel];
+        [self addSubview:aLabel];
+    }
+}
+
+
+- (RRSGlowLabel *)duplicateLabel {
+    RRSGlowLabel *duplicateLabel = [[RRSGlowLabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    duplicateLabel.text = self.text;
+    duplicateLabel.textColor = self.textColor;
+    duplicateLabel.font = self.font;
+    duplicateLabel.numberOfLines = self.numberOfLines;
+    duplicateLabel.textAlignment = self.textAlignment;
+    duplicateLabel.backgroundColor = [UIColor clearColor];
+    
+    duplicateLabel.glowColor = self.glowColor;
+    duplicateLabel.glowOffset = self.glowOffset;
+    duplicateLabel.glowAmount = self.glowAmount;
+    
+    return [duplicateLabel autorelease];
+}
+
+
 @end
