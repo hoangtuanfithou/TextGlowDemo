@@ -20,4 +20,10 @@
 @property (nonatomic, assign) CGFloat glowAmount;
 @property (nonatomic, retain) UIColor *glowColor;
 
+/**
+ *  Use trick to make Shadow darker
+ *
+ *  @param darkLevel dark level
+ */
+- (void)setDarkShadowLevel:(int)darkLevel;
 @end
